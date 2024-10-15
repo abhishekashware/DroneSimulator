@@ -147,7 +147,10 @@ useEffect(() => {
     const style={flex:1,height:'500px',width:'500px'};
     return (
     <Container>
+        <div style={{textAlign:'center'}}>
         <h1>Drone Simulator</h1>
+        <h3>Note:- Amount of difference between timestamps will be delay considered for change of position of drone</h3>
+        </div>
         <InnerContainer>
             {isLoaded?(
         <GoogleMap key={seekIndex} onDblClick={()=>console.log(pointsList)} mapContainerStyle={style} center={pointsList[seekIndex]} onLoad={onLoad} zoom={10}>
@@ -198,7 +201,7 @@ useEffect(() => {
                 })}
                 onChange={(e)=>setPointsList(prevList=>prevList.map((item,ind)=>(index==ind)?{...item,lng:parseFloat(e.target.value)}:item))} 
                 />
-                <input type='tel' placeholder='timestamp' step='any'
+                <input type='tel' placeholder='timestamp in milliseconds' step='any'
                 {...register(`timestamp${index}`,{
                     required:'timestamp is required'
                 })}
